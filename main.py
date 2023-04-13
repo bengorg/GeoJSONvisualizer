@@ -31,18 +31,9 @@ button_exit = tk.Button(m, text='Exit', width=25, command=m.destroy)
 # button to get a file
 button_file = tk.Button(m, text='Choose File', width=30, command=getFile)
 
-# canvas
-view = tk.Canvas(m, width=40, height=60)
-
-canvas_height = 20
-canvas_width = 200
-
-y = int(canvas_height/2)
-
 
 # initalize all our widgets into the window
 file_name_label.pack()
-view.pack()
 button_file.pack()
 button_exit.pack()
 
