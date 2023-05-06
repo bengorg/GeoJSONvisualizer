@@ -26,7 +26,7 @@ def createPlot(filename):
     gdf.plot(ax=ax)
     canvas = FigureCanvasTkAgg(fig, master=m)
     canvas.draw()
-    canvas.get_tk_widget().pack()
+    canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=1)
 
 
 # Set up the main window with a title and size and background color
