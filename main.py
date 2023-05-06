@@ -3,6 +3,10 @@
 import tkinter as tk
 from tkinter import filedialog
 
+import geopandas as gpd
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+
 # Function to browse your json files
 
 
@@ -12,6 +16,17 @@ def getFile():
                                           filetypes=(("JSON Files", "*.json* *.geojson*"), ("all files", "*.*")))
     # Show the name of the file selected
     file_name_label.configure(text="File Opened: "+filename)
+    createPlot(filename)
+
+
+def createPlot(filename):
+    fig = Figure(figsize=(5, 4), dpi=100)
+    ax = fig.add_subplot(111)
+    gdf = gpd.read_file(filename)
+    gdf.plot(ax=ax)
+    canvas = FigureCanvasTkAgg(fig, master=m)
+    canvas.draw()
+    canvas.get_tk_widget().pack()
 
 
 # Set up the main window with a title and size and background color
